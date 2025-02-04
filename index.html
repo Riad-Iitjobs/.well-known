@@ -4,25 +4,42 @@
     <title>IIT Jobs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        window.onload = function() {
-            // Get the current path
-            var path = window.location.pathname;
+        function getQueryParam(param) {
+            var searchParams = new URLSearchParams(window.location.search);
+            return searchParams.get(param);
+        }
+
+        function openApp(jobId) {
+            // Construct the deep link
+            var deepLink = 'iitjobs://job/' + jobId;
+            console.log('Opening deep link:', deepLink);
             
-            // Check if it's a job details path
-            if (path.startsWith('/job/')) {
-                // Extract the job ID
-                var jobId = path.split('/').pop();
-                
-                // Construct the deep link
-                var deepLink = 'iitjobs://job/' + jobId;
-                
-                // Try to open the app
-                window.location.href = deepLink;
-                
-                // After a delay, redirect to Play Store if app is not installed
+            // Try to open the app
+            window.location.href = deepLink;
+            
+            // After a delay, check if we're still on the same page
+            setTimeout(function() {
+                // If we're still here, the app probably isn't installed
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
+            }, 1000);
+        }
+
+        window.onload = function() {
+            console.log('Page loaded, searching for job ID...');
+            
+            // Get job ID from query parameter
+            var jobId = getQueryParam('jobId');
+            console.log('Job ID from query:', jobId);
+            
+            if (jobId) {
+                console.log('Found job ID:', jobId);
+                openApp(jobId);
+            } else {
+                // No job ID found, redirect to Play Store after a short delay
+                console.log('No job ID found, redirecting to Play Store...');
                 setTimeout(function() {
                     window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
-                }, 1000);
+                }, 500);
             }
         };
     </script>
@@ -31,7 +48,8 @@
     <div style="text-align: center; padding: 20px;">
         <h1>IIT Jobs</h1>
         <p>Redirecting you to the app...</p>
-        <p>If you're not redirected, <a href="https://play.google.com/store/apps/details?id=com.iitjobs.candidate">download the app here</a>.</p>
+        <p>If you're not redirected automatically, <a href="#" onclick="var jobId = getQueryParam('jobId'); if(jobId) openApp(jobId); return false;">click here to open in app</a></p>
+        <p>Don't have the app? <a href="https://play.google.com/store/apps/details?id=com.iitjobs.candidate">Download it here</a></p>
     </div>
 </body>
 </html>

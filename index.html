@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IIT Jobs Redirect</title>
+    <script>
+        window.onload = function() {
+            // Extract job ID from URL
+            const path = window.location.pathname;
+            const jobId = path.split('/job/')[1];
+            
+            // Try to open app first
+            window.location.href = `iitjobs://job/${jobId}`;
+            
+            // Fallback after a short delay if app isn't installed
+            setTimeout(function() {
+                // Redirect to app store or your website
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to IIT Jobs app...</p>
+</body>
+</html>

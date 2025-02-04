@@ -8,27 +8,33 @@
             // Extract job ID from URL
             const path = window.location.pathname;
             const jobId = path.split('/job/')[1];
-            
-            // Try to open app first
-            window.location.href = `iitjobs://job/${jobId}`;
-            
-            // Detect iOS or Android
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            
-            // Fallback after a short delay if app isn't installed
-            setTimeout(function() {
-                if (isIOS) {
-                    // Replace with your App Store ID
-                    window.location.href = 'https://apps.apple.com/app/com.iitjobs.candidate';
-                } else {
-                    // Android and others default to Play Store
-                    window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
-                }
-            }, 1000);
+
+            // If we're on mobile, try to open the app first
+            if (jobId) {
+                // Try to open app using a custom URL scheme
+                window.location.href = `iitjobs://job/${jobId}`;
+
+                // Detect iOS or Android for fallback
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+                // Fallback after a short delay if app isn't installed
+                setTimeout(function() {
+                    if (isIOS) {
+                        // Replace with your App Store URL
+                        window.location.href = 'https://apps.apple.com/app/com.iitjobs.candidate';
+                    } else {
+                        // Android and others default to Play Store
+                        window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
+                    }
+                }, 1000);
+            } else {
+                // If there's no jobId in URL, redirect to Flutter web app (index.html)
+                window.location.href = '/index.html';
+            }
         }
     </script>
 </head>
 <body>
-    <p>Redirecting to IIT Jobs app...</p>
+    <p>Redirecting to IIT Jobs app or web...</p>
 </body>
 </html>

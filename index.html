@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>IIT Jobs Redirect</title>
+    <title>IIT Jobs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         window.onload = function() {
-            // Extract job ID from URL
-            const path = window.location.pathname;
-            const jobId = path.split('/job/')[1];
-
-            // Check if the job ID exists in the URL
-            if (jobId) {
-                // Try to open the app using the custom scheme (iitjobs://)
-                window.location.href = `iitjobs://job/${jobId}`;
-
-                // Detect iOS or Android for fallback
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-                // Fallback after a short delay if the app isn't installed
+            // Get the current path
+            var path = window.location.pathname;
+            
+            // Check if it's a job details path
+            if (path.startsWith('/job/')) {
+                // Extract the job ID
+                var jobId = path.split('/').pop();
+                
+                // Construct the deep link
+                var deepLink = 'iitjobs://job/' + jobId;
+                
+                // Try to open the app
+                window.location.href = deepLink;
+                
+                // After a delay, redirect to Play Store if app is not installed
                 setTimeout(function() {
-                    if (isIOS) {
-                        // If it's iOS, redirect to the App Store
-                        window.location.href = 'https://apps.apple.com/app/com.iitjobs.candidate';
-                    } else {
-                        // For Android, redirect to Google Play Store
-                        window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
-                    }
+                    window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
                 }, 1000);
-            } else {
-                // If no job ID is provided, you can either show a message or do nothing
-                window.location.href = '/index.html'; // Redirect to home if no job ID
             }
-        }
+        };
     </script>
 </head>
 <body>
-    <p>Redirecting to IIT Jobs app...</p>
+    <div style="text-align: center; padding: 20px;">
+        <h1>IIT Jobs</h1>
+        <p>Redirecting you to the app...</p>
+        <p>If you're not redirected, <a href="https://play.google.com/store/apps/details?id=com.iitjobs.candidate">download the app here</a>.</p>
+    </div>
 </body>
 </html>

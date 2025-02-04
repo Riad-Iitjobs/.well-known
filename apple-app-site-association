@@ -5,7 +5,7 @@
             {
                 "appID": "2GYTD6UUN3.com.iitjobs.candidate",
                  "paths": [
-                    "/jobDetailsScreen/*"
+                    "/job/*"
                 ]
             }
         ]

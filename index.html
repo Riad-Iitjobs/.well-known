@@ -12,10 +12,18 @@
             // Try to open app first
             window.location.href = `iitjobs://job/${jobId}`;
             
+            // Detect iOS or Android
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            
             // Fallback after a short delay if app isn't installed
             setTimeout(function() {
-                // Redirect to app store or your website
-                window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
+                if (isIOS) {
+                    // Replace with your App Store ID
+                    window.location.href = 'https://apps.apple.com/app/YOUR_APP_ID';
+                } else {
+                    // Android and others default to Play Store
+                    window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
+                }
             }, 1000);
         }
     </script>

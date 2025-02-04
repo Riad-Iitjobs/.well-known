@@ -9,32 +9,32 @@
             const path = window.location.pathname;
             const jobId = path.split('/job/')[1];
 
-            // If we're on mobile, try to open the app first
+            // Check if the job ID exists in the URL
             if (jobId) {
-                // Try to open app using a custom URL scheme
+                // Try to open the app using the custom scheme (iitjobs://)
                 window.location.href = `iitjobs://job/${jobId}`;
 
                 // Detect iOS or Android for fallback
                 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-                // Fallback after a short delay if app isn't installed
+                // Fallback after a short delay if the app isn't installed
                 setTimeout(function() {
                     if (isIOS) {
-                        // Replace with your App Store URL
+                        // If it's iOS, redirect to the App Store
                         window.location.href = 'https://apps.apple.com/app/com.iitjobs.candidate';
                     } else {
-                        // Android and others default to Play Store
+                        // For Android, redirect to Google Play Store
                         window.location.href = 'https://play.google.com/store/apps/details?id=com.iitjobs.candidate';
                     }
                 }, 1000);
             } else {
-                // If there's no jobId in URL, redirect to Flutter web app (index.html)
-                window.location.href = '/index.html';
+                // If no job ID is provided, you can either show a message or do nothing
+                window.location.href = '/index.html'; // Redirect to home if no job ID
             }
         }
     </script>
 </head>
 <body>
-    <p>Redirecting to IIT Jobs app or web...</p>
+    <p>Redirecting to IIT Jobs app...</p>
 </body>
 </html>

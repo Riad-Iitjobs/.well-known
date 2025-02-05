@@ -4,7 +4,13 @@
         "details": [
             {
                 "appID": "2GYTD6UUN3.com.iitjobs.candidate",
-                 "paths": [
+                "paths": [
+                    "/job/*"
+                ]
+            },
+            {
+                "appID": "2GYTD6UUN3.com.iitjobs.candidate.dev",
+                "paths": [
                     "/job/*"
                 ]
             }

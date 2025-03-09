@@ -5,16 +5,13 @@
             {
                 "appID": "2GYTD6UUN3.com.iitjobs.candidate",
                 "paths": [
-                    "/job/*"،
-                    "/.well-known*"
-
+                    "/job/*"
                 ]
             },
             {
                 "appID": "2GYTD6UUN3.com.iitjobs.candidate.dev",
                 "paths": [
-                    "/job/*"،
-                    "/.well-known*"
+                    "/job/*"
                 ]
             }
         ]

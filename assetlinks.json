@@ -1,9 +1,22 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.iitjobs.candidate",
-    "sha256_cert_fingerprints":
-    ["FE:17:44:AE:5C:50:88:A1:D9:59:B5:E8:97:2F:01:2F:16:00:52:FD:ED:27:37:28:49:D8:ED:DA:D5:66:28:A0"]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.iitjobs.candidate",
+      "sha256_cert_fingerprints":
+      ["FE:17:44:AE:5C:50:88:A1:D9:59:B5:E8:97:2F:01:2F:16:00:52:FD:ED:27:37:28:49:D8:ED:DA:D5:66:28:A0"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.iitjobs.candidate.dev",
+      "sha256_cert_fingerprints": [
+        "73:97:97:4A:C6:91:4B:DC:1E:01:CB:CD:9A:9F:C9:C0:4F:93:3A:9C:33:02:5D:17:FD:0E:49:58:9F:57:57:DD",
+        "D2:14:3F:49:EA:89:9F:6A:55:0A:F4:4D:05:E7:36:C6:27:2A:43:DF:66:AE:0C:57:2B:03:87:E8:12:B3:1A:53"
+      ]
+    }
   }
-}]
+]

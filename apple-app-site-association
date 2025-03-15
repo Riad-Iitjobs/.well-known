@@ -6,14 +6,16 @@
                 "appID": "2GYTD6UUN3.com.iitjobs.candidate",
                 "paths": [
                     "/job/*",
-                    "/reset-password/*"
+                    "/reset-password/*",
+                    "/verify-email/*"
                 ]
             },
             {
                 "appID": "2GYTD6UUN3.com.iitjobs.candidate.dev",
                 "paths": [
                     "/job/*",
-                    "/reset-password/*"
+                    "/reset-password/*",
+                    "/verify-email/*"
                 ]
             }
         ]
